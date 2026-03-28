@@ -1,6 +1,6 @@
 % --- Parametri ---
 f_reale = 100;        % Il segnale originale
-fs = 200;       % Frequenza di campionamento 
+fs = 250;       % Frequenza di campionamento 
 f_alias = abs(fs - f_reale); % La frequenza di aliasing
 
 % --- 1. La Realtà (Analogica) ---
@@ -9,6 +9,8 @@ fs_alta = 10000;
 t_reale = 0:1/fs_alta:0.1; 
 y_reale = sin(2*pi*f_reale*t_reale);
 figure, plot(t_reale,y_reale)
+
+%sound(y_reale, fs)
 
 % --- 2. Il Campionamento ---
 t_camp = 0:1/fs:0.1;
