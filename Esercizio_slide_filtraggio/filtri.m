@@ -5,7 +5,7 @@ t = 0:1/fs:2;
 pulito = sin(2*pi*f*t);
 
 disturbo = 0.5 * sin(2*pi*50*t);
-rumore = 0.2 * sin(2*pi*randn*t);
+rumore = 0.2 * randn(size(t));
 
 disturbato = pulito + disturbo;
 dist_rum = disturbato + rumore;
@@ -15,8 +15,8 @@ fc1 = 150;
 [b1, a1] = butter(2, fc1/(fs/2), 'high');
 filtrato1 = filtfilt(b1, a1, dist_rum);
 
-fc2 = 3000;
-[b2, a2] = butter(2, fc2/(fs/2), 'high');
+fc2 = 500;
+[b2, a2] = butter(2, fc2/(fs/2), 'low');
 filtrato2 = filtfilt(b2, a2, filtrato1);
 
 % GRAFICI
